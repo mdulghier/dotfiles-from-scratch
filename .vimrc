@@ -3,8 +3,17 @@ set nocompatible " disable vi compatibility
 set ttyfast
 set modelines=0 " prevent some security exploits
 
-" pathogen
-execute pathogen#infect()
+" Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'altercation/solarized', { 'rtp': 'vim-colors-solarized' }
+
+call vundle#end()
+
 
 " theme & appearance
 set background=dark
@@ -84,3 +93,4 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
