@@ -11,6 +11,7 @@ function base {
 	
 	# Node.js
 	if ! type node > /dev/null 2>&1; then
+		mkdir -p $HOME/.npm/.global
 		echo prefix = ~/.npm/.global >> ~/.npmrc
 		echo "export PATH=$PATH:$HOME/.npm/.global/bin" >> ~/.bashrc
 		sudo pacman -S --needed --noconfirm nodejs
