@@ -41,12 +41,19 @@ function Citrix {
 	# sudo pacman -S --noconfirm gcc gcc-libs
 }
 
-BASEDIR=$HOME/dev/dotfiles
+BASEDIR=$(pwd)
 
 function init {
 	ln -sf $BASEDIR/.bashrc ~/.bashrc
+	ln -sf $BASEDIR/.aliases ~/.aliases
+	ln -sf $BASEDIR/.functions ~/.functions
+	ln -sf $BASEDIR/.bash_profile ~/.bash_profile
 	ln -sf $BASEDIR/.vimrc ~/.vimrc   
 	ln -sf $BASEDIR/.tmux.conf ~/.tmux.conf 
+	mkdir -p $HOME/.config/synapse
+	ln -sf $BASEDIR/.config/synapse/config.json ~/.config/synapse/config.json
+	mkdir -p $HOME/.config/terminator
+	ln -sf $BASEDIR/.config/terminator/config ~/.config/terminator/config
 	if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
 		git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	fi

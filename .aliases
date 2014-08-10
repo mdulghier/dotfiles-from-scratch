@@ -1,0 +1,25 @@
+# Directory navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+alias dev="cd ~/dev"
+
+
+# Shortcuts
+alias g="git"
+
+
+# Nicer ls
+if ls --color > /dev/null 2>&1; then
+	colorflag="--color"  # GNU
+else
+	colorflag="-G"  # OS X
+fi
+
+alias ls="command ls ${colorflag}"
+alias l="ls -lF ${colorflag}"
+alias la="ls -laF ${colorflag}"
+alias ll="ls -laF ${colorflag}"
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+
