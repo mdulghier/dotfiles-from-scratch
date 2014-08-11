@@ -4,10 +4,14 @@ set -e
 
 function base {
 	sudo pacman -Syu
-	sudo pacman -S --needed --noconfirm vim curl wget tmux terminator xclip
+	sudo pacman -S --needed --noconfirm vim curl wget tmux terminator xclip 
+	sudo pacman -S --needed --noconfirm tk # needed for git gui
 	sudo pacman -S --needed --noconfirm ttf-droid ttf-inconsolata
 	sudo pacman -S --needed --noconfirm chromium firefox synapse
 	sudo pacman -S --needed --noconfirm docker virtualbox vagrant meld
+
+	sudo systemctl enable docker
+	sudo systemctl start docker
 	
 	# Node.js
 	if ! type node > /dev/null 2>&1; then
@@ -45,11 +49,12 @@ BASEDIR=$(pwd)
 
 function init {
 	ln -sf $BASEDIR/.bashrc ~/.bashrc
+	ln -sf $BASEDIR/.bash_profile ~/.bash_profile
 	ln -sf $BASEDIR/.aliases ~/.aliases
 	ln -sf $BASEDIR/.functions ~/.functions
-	ln -sf $BASEDIR/.bash_profile ~/.bash_profile
 	ln -sf $BASEDIR/.vimrc ~/.vimrc   
 	ln -sf $BASEDIR/.tmux.conf ~/.tmux.conf 
+	ln -sf $BASEDIR/.gitconfig ~/.gitconfig
 	mkdir -p $HOME/.config/synapse
 	ln -sf $BASEDIR/.config/synapse/config.json ~/.config/synapse/config.json
 	mkdir -p $HOME/.config/terminator

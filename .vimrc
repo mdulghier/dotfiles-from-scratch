@@ -10,15 +10,16 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'altercation/solarized', { 'rtp': 'vim-colors-solarized' }
+" Plugin 'altercation/solarized', { 'rtp': 'vim-colors-solarized' }
+Plugin 'jonathanfilip/vim-lucius'
 
 call vundle#end()
 
 
 " theme & appearance
 set background=dark
-colorscheme solarized
-call togglebg#map("<F5>")
+colorscheme lucius
+" call togglebg#map("<F5>")
 
 set cursorline
 set title
