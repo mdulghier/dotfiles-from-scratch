@@ -27,6 +27,9 @@ function base {
 		mkdir -p $HOME/dev
 		git clone https://github.com/mdulghier/dotfiles.git
 	fi
+
+	# Git Extras
+	(cd /tmp && git clone --depth 1 https://github.com/visionmedia/git-extras.git && cd git-extras && sudo make install)	
 }
 
 
