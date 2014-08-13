@@ -5,7 +5,7 @@ set -e
 function base {
 	sudo pacman -Syu
 	sudo pacman -S --needed --noconfirm vim curl wget tmux terminator xclip 
-	sudo pacman -S --needed --noconfirm tk # needed for git gui
+	sudo pacman -S --needed --noconfirm tk aspell-en  # needed for git gui
 	sudo pacman -S --needed --noconfirm ttf-droid ttf-inconsolata
 	sudo pacman -S --needed --noconfirm chromium firefox synapse
 	sudo pacman -S --needed --noconfirm docker virtualbox vagrant meld
