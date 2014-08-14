@@ -18,7 +18,7 @@ function base {
 		mkdir -p $HOME/.npm/.global
 		echo prefix = ~/.npm/.global >> ~/.npmrc
 		echo "export PATH=$PATH:$HOME/.npm/.global/bin" >> ~/.bashrc
-		sudo pacman -S --needed --noconfirm nodejs
+		sudo pacman -S --needed --noconfirm nodejs python2
 		npm install -g nodemon gulp bower mocha
 	fi
 
@@ -55,6 +55,12 @@ function Citrix {
 function Docker {
 	sudo docker pull mongo
 	sudo docker pull redis
+}
+
+
+function ssh {
+	ssh-keygen -t RSA -C "markus@dulghier.com"
+	cat ~/.ssh/id_rsa.pub | xclip -selection c
 }
 
 BASEDIR=$(pwd)
