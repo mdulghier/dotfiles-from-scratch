@@ -48,6 +48,11 @@ function Citrix {
 	# sudo pacman -S --noconfirm gcc gcc-libs
 }
 
+function Docker {
+	sudo docker pull mongo
+	sudo docker pull redis
+}
+
 BASEDIR=$(pwd)
 
 function init {
