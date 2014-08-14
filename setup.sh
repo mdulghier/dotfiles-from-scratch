@@ -36,6 +36,10 @@ function base {
 function ext {
 	sudo pacman -S --needed --noconfirm skype keepass
 
+	sudo pacman -S --needed --noconfirm qtcurve-kde4
+
+	# TODO: caledonia theme for KDE
+
 	yaourt -S --needed --noconfirm sublime-text dropbox hipchat 
 	yaourt -S --needed --noconfirm robomongo spotify 
 }
