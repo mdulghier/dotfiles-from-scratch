@@ -10,7 +10,7 @@
     foreground_color = "#d9ffd1"
     icon_bell = False
     show_titlebar = False
-    font = Inconsolata Medium 12
+    font = Droid Sans Mono 10
     background_color = "#3d3d3d"
     scrollback_infinite = True
 [layouts]
