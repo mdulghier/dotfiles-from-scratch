@@ -90,6 +90,8 @@ export LC_ALL="en_US.UTF-8"
 # Always use colored grep
 export GREP_OPTIONS="--color=auto"
 
-export TERM=xterm-256color
+if [ $TERM != "screen-256color" ]; then
+	export TERM=xterm-256color
+fi
 export PATH=$PATH:$HOME/.npm/.global/bin
 export PYTHON=python2.7
