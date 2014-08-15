@@ -4,6 +4,9 @@ set -e
 
 function base {
 	sudo pacman -Syu
+	
+	yaourt -S packer
+
 	sudo pacman -S --needed --noconfirm vim curl wget tmux terminator xclip 
 	sudo pacman -S --needed --noconfirm tk aspell-en  # needed for git gui
 	sudo pacman -S --needed --noconfirm ttf-droid ttf-inconsolata
@@ -32,6 +35,12 @@ function base {
 	(cd /tmp && git clone --depth 1 https://github.com/visionmedia/git-extras.git && cd git-extras && sudo make install)	
 }
 
+function zsh {
+	sudo pacman -S --needed --noconfirm zsh zsh-completions
+	packer -S oh-my-zsh-git
+	cp /usr/share/oh-my-zsh/zshrc ~/.zshrc
+	chsh -s $(which zsh)
+}
 
 function ext {
 	sudo pacman -S --needed --noconfirm skype keepass
@@ -40,8 +49,8 @@ function ext {
 
 	# TODO: caledonia theme for KDE
 
-	yaourt -S --needed --noconfirm sublime-text dropbox hipchat 
-	yaourt -S --needed --noconfirm robomongo spotify 
+	packer -S --needed --noconfirm sublime-text dropbox hipchat 
+	packer -S --needed --noconfirm robomongo spotify 
 }
 
 function Citrix {
