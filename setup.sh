@@ -1,5 +1,7 @@
 #!/bin/bash
 
+BASEDIR=$(pwd)
+
 set -e
 
 function base {
@@ -38,7 +40,7 @@ function base {
 function zsh {
 	sudo pacman -S --needed --noconfirm zsh zsh-completions
 	packer -S oh-my-zsh-git
-	cp /usr/share/oh-my-zsh/zshrc ~/.zshrc
+	ln -sf $BASEDIR/.zshrc ~/.zshrc
 	chsh -s $(which zsh)
 }
 
@@ -72,11 +74,8 @@ function ssh {
 	cat ~/.ssh/id_rsa.pub | xclip -selection c
 }
 
-BASEDIR=$(pwd)
 
 function init {
-	ln -sf $BASEDIR/.bashrc ~/.bashrc
-	ln -sf $BASEDIR/.bash_profile ~/.bash_profile
 	ln -sf $BASEDIR/.aliases ~/.aliases
 	ln -sf $BASEDIR/.functions ~/.functions
 	ln -sf $BASEDIR/.vimrc ~/.vimrc   

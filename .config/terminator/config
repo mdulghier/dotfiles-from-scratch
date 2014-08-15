@@ -6,7 +6,6 @@
     scrollbar_position = hidden
     use_system_font = False
     background_darkness = 0.89
-    background_type = transparent
     background_image = None
     cursor_color = "#eee8d5"
     foreground_color = "#d9ffd1"
