@@ -10,16 +10,14 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-" Plugin 'altercation/solarized', { 'rtp': 'vim-colors-solarized' }
-Plugin 'jonathanfilip/vim-lucius'
+Plugin 'kien/ctrlp.vim'
+Plugin 'flazz/vim-colorschemes'
 
 call vundle#end()
 
 
 " theme & appearance
-set background=dark
-colorscheme lucius
-" call togglebg#map("<F5>")
+colorscheme zenburn
 
 set cursorline
 set title
@@ -96,7 +94,6 @@ nnoremap <C-h> <C-w>h   " to left pane
 nnoremap <C-j> <C-w>j   " to pane below
 nnoremap <C-k> <C-w>k   " to pane above
 nnoremap <C-l> <C-w>l   " to right pane
-
 
 " NERDtree
 autocmd StdinReadPre * let s:std_in=1

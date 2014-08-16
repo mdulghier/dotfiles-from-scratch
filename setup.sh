@@ -1,9 +1,14 @@
 #!/bin/bash
 
+BASEDIR=$(pwd)
+
 set -e
 
 function base {
 	sudo pacman -Syu
+	
+	yaourt -S packer
+
 	sudo pacman -S --needed --noconfirm vim curl wget tmux terminator xclip 
 	sudo pacman -S --needed --noconfirm tk aspell-en  # needed for git gui
 	sudo pacman -S --needed --noconfirm ttf-droid ttf-inconsolata
@@ -32,6 +37,12 @@ function base {
 	(cd /tmp && git clone --depth 1 https://github.com/visionmedia/git-extras.git && cd git-extras && sudo make install)	
 }
 
+function zsh {
+	sudo pacman -S --needed --noconfirm zsh zsh-completions
+	packer -S oh-my-zsh-git
+	ln -sf $BASEDIR/.zshrc ~/.zshrc
+	chsh -s $(which zsh)
+}
 
 function ext {
 	sudo pacman -S --needed --noconfirm skype keepass
@@ -40,8 +51,8 @@ function ext {
 
 	# TODO: caledonia theme for KDE
 
-	yaourt -S --needed --noconfirm sublime-text dropbox hipchat 
-	yaourt -S --needed --noconfirm robomongo spotify 
+	packer -S --needed --noconfirm sublime-text dropbox hipchat 
+	packer -S --needed --noconfirm robomongo spotify 
 }
 
 function Citrix {
@@ -63,11 +74,8 @@ function ssh {
 	cat ~/.ssh/id_rsa.pub | xclip -selection c
 }
 
-BASEDIR=$(pwd)
 
 function init {
-	ln -sf $BASEDIR/.bashrc ~/.bashrc
-	ln -sf $BASEDIR/.bash_profile ~/.bash_profile
 	ln -sf $BASEDIR/.aliases ~/.aliases
 	ln -sf $BASEDIR/.functions ~/.functions
 	ln -sf $BASEDIR/.vimrc ~/.vimrc   
