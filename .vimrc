@@ -1,9 +1,5 @@
-" basic config
-set nocompatible " disable vi compatibility
-set ttyfast
-set modelines=0 " prevent some security exploits
+""""""""""""""""""" PLUGINS
 
-" Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
@@ -12,36 +8,26 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'godlygeek/csapprox'  " make GVim colorschemes work in terminal Vim
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'scrooloose/nerdcommenter'
 Plugin 'rking/ag.vim'
-" Plugin 'mattn/emmet-vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tcomment_vim'
-" Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-surround'
+" Plugin 'mattn/emmet-vim'
 " Plugin 'msanders/snipmate.vim'
+" Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()
 
-" theme & appearance
-colorscheme zenburn
+"""""""""""""""""""" GLOBAL SETTINGS
 
-set cursorline
-set title
-set ruler
-set relativenumber
-syntax on
-filetype plugin indent on
-
-" tabs/spaces
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set noexpandtab
-
+" basic config
+set nocompatible " disable vi compatibility
+set ttyfast
+set modelines=0 " prevent some security exploits
 set encoding=utf-8
-set scrolloff=3
+set scrolloff=3       " show 3 lines context when scrolling
 set autoindent
 set showmode
 set showcmd
@@ -50,9 +36,19 @@ set wildmenu
 set wildmode=list:longest
 set visualbell
 set backspace=indent,eol,start
-set laststatus=2
+set laststatus=2      " always show a status line
 set undofile
 set mouse=a
+set wrap
+set textwidth=79
+set formatoptions=qrn1
+set colorcolumn=85
+
+" tabs/spaces
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
 
 " central backups, swapfiles and undo history
 set backupdir=~/.vim/backups
@@ -61,7 +57,7 @@ if exists("&undodir")
 	set undodir=~/.vim/undo
 endif
 
-let mapleader = ","
+""""""""""""""""""""""""" SEARCH
 
 nnoremap / /\v
 vnoremap / /\v
@@ -71,14 +67,13 @@ set gdefault
 set incsearch
 set showmatch
 set hlsearch
-nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
-vnoremap <tab> %
 
-set wrap
-set textwidth=79
-set formatoptions=qrn1
-set colorcolumn=85
+
+""""""""""""""""""""""""" MAPPINGS
+
+let mapleader = ","
+
+nnoremap <leader><space> :noh<cr>    " exit search
 
 nnoremap j gj
 nnoremap k gk
@@ -89,12 +84,26 @@ vnoremap <F1> <ESC>
 inoremap jj <ESC>
 
 nnoremap <leader>e :E<CR> " open netrw file explorer in directory of current buffer
-
 nnoremap <leader>w <C-w>v<C-w>l " open vertical pane to the left
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+
+"""""""""""""""""""""" APPEARANCE
+
+colorscheme zenburn
+
+set cursorline
+set title
+set ruler
+set number
+syntax on
+filetype plugin indent on
+
+
+"""""""""""""""""""""" PLUGIN CONFIG
 
 " airline
 let g:airline_powerline_fonts=1
@@ -110,3 +119,16 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+
+"""""""""""""""""""""" CUSTOM FUNCTIONS
+
+" Toggle relative/absolute line numbering
+function! NumberToggle()
+	if(&relativenumber == 1)
+		set number
+	else
+		set relativenumber
+	endif
+endfunc
+
+nnoremap <F10> :call NumberToggle()<CR>   " toggle from relativenumber back to number does not work

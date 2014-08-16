@@ -50,6 +50,8 @@ function ext {
 	# Pretty desktop
 	sudo pacman -S --needed --noconfirm qtcurve-kde4
 	sudo pacman -S --needed --noconfirm ttf-droid ttf-inconsolata
+
+	packer -S ttf-ms-fonts ttf-mac-fonts 
 	# TODO: caledonia theme for KDE
 
 	# Tools for work
