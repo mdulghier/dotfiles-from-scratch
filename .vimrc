@@ -8,13 +8,20 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'kien/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdcommenter'
+Plugin 'rking/ag.vim'
+" Plugin 'mattn/emmet-vim'
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/syntastic'
+Plugin 'tomtom/tcomment_vim'
+" Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+" Plugin 'msanders/snipmate.vim'
 
 call vundle#end()
-
 
 " theme & appearance
 colorscheme zenburn
@@ -80,11 +87,21 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 inoremap jj <ESC>
 
-nnoremap <leader>w <C-w>v<C-w>l
+nnoremap <leader>e :E<CR> " open netrw file explorer in directory of current buffer
+
+nnoremap <leader>w <C-w>v<C-w>l " open vertical pane to the left
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" airline
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#whitespace#enabled=0
+" let g:airline#extensions#tabline#left_sep=' '      " vertical separators in
+" tabline
+" let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " NERDtree
 autocmd StdinReadPre * let s:std_in=1
