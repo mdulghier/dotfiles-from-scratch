@@ -65,7 +65,10 @@ set gdefault
 set incsearch
 set showmatch
 set hlsearch
+
+" quit search
 nnoremap <leader><space> :noh<cr>
+
 nnoremap <tab> %
 vnoremap <tab> %
 
@@ -77,16 +80,22 @@ set colorcolumn=85
 nnoremap j gj
 nnoremap k gk
 
+" unmap F1 key
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
+
+" jj as alternative ESC to keep fingers on the home row
 inoremap jj <ESC>
 
+" open new pane to the left of the current pane
 nnoremap <leader>w <C-w>v<C-w>l
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+
+" pane navigation
+nnoremap <C-h> <C-w>h   " to left pane
+nnoremap <C-j> <C-w>j   " to pane below
+nnoremap <C-k> <C-w>k   " to pane above
+nnoremap <C-l> <C-w>l   " to right pane
 
 
 " NERDtree
