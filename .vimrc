@@ -9,6 +9,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'flazz/vim-colorschemes'
+Plugin 'godlygeek/csapprox'  " make GVim colorschemes work in terminal Vim
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 " Plugin 'scrooloose/nerdcommenter'
