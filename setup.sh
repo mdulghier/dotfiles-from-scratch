@@ -6,14 +6,11 @@ set -e
 
 function base {
 	sudo pacman -Syu
-	
 	yaourt -S packer
 
 	sudo pacman -S --needed --noconfirm vim curl wget tmux terminator xclip 
 	sudo pacman -S --needed --noconfirm tk aspell-en  # needed for git gui
-	sudo pacman -S --needed --noconfirm ttf-droid ttf-inconsolata
-	sudo pacman -S --needed --noconfirm chromium firefox synapse
-	sudo pacman -S --needed --noconfirm docker virtualbox vagrant meld
+	sudo pacman -S --needed --noconfirm docker virtualbox vagrant
 
 	sudo systemctl enable docker
 	sudo systemctl start docker
@@ -45,17 +42,26 @@ function zsh {
 }
 
 function ext {
+	# Default applications
+	sudo pacman -S --needed --noconfirm chromium firefox synapse
+	sudo pacman -S --needed --noconfirm synapse
 	sudo pacman -S --needed --noconfirm skype keepass
 
+	# Pretty desktop
 	sudo pacman -S --needed --noconfirm qtcurve-kde4
+	sudo pacman -S --needed --noconfirm ttf-droid ttf-inconsolata
 
+	packer -S ttf-ms-fonts ttf-mac-fonts 
 	# TODO: caledonia theme for KDE
 
-	packer -S --needed --noconfirm sublime-text dropbox hipchat 
-	packer -S --needed --noconfirm robomongo spotify 
+	# Tools for work
+	sudo pacman -S --needed --noconfirm sublime-text dropbox hipchat robomongo
+
+	# Entertainment
+	sudo pacman -S --needed --noconfirim spotify	
 }
 
-function Citrix {
+function citrix {
 	echo "Install Citrix client manually!"
 	# yaourt --needed icaclient
 	# mkdir -p $HOME/.ICAClient/cache
@@ -63,7 +69,7 @@ function Citrix {
 	# sudo pacman -S --noconfirm gcc gcc-libs
 }
 
-function Docker {
+function docker {
 	sudo docker pull mongo
 	sudo docker pull redis
 }
@@ -74,17 +80,28 @@ function ssh {
 	cat ~/.ssh/id_rsa.pub | xclip -selection c
 }
 
+function coding {
+	sudo pacman -S --needed --noconfirm the_silver_searcher meld
+	packer -S powerline-fonts-git
+	npm install -g jshint
+}
+
 
 function init {
+	# Shell & base tools setup
 	ln -sf $BASEDIR/.aliases ~/.aliases
 	ln -sf $BASEDIR/.functions ~/.functions
 	ln -sf $BASEDIR/.vimrc ~/.vimrc   
 	ln -sf $BASEDIR/.tmux.conf ~/.tmux.conf 
 	ln -sf $BASEDIR/.gitconfig ~/.gitconfig
+
+	# GUI tools setup
 	mkdir -p $HOME/.config/synapse
 	ln -sf $BASEDIR/.config/synapse/config.json ~/.config/synapse/config.json
 	mkdir -p $HOME/.config/terminator
 	ln -sf $BASEDIR/.config/terminator/config ~/.config/terminator/config
+
+	# Vim setup
 	if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
 		git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	fi
