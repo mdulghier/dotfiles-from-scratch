@@ -68,6 +68,8 @@ set incsearch
 set showmatch
 set hlsearch
 
+set foldmethod=indent
+set foldlevelstart=1
 
 """"""""""""""""""""""""" MAPPINGS
 
@@ -84,12 +86,13 @@ vnoremap <F1> <ESC>
 inoremap jj <ESC>
 
 nnoremap <leader>e :E<CR> " open netrw file explorer in directory of current buffer
-nnoremap <leader>w <C-w>v<C-w>l " open vertical pane to the left
+nnoremap <leader>_ <C-w>v<C-w>l " open vertical pane to the left
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+nnoremap <leader>w :bprevious<CR>:bdelete #<CR> " close the current buffer without closing the window
 
 """""""""""""""""""""" APPEARANCE
 
