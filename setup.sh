@@ -9,11 +9,18 @@ function base {
 	yaourt -S packer
 
 	sudo pacman -S --needed --noconfirm vim curl wget tmux terminator xclip 
+	sudo pacman -S --needed --noconfirm nss-mdns      # host name resolution via mDNS
 	sudo pacman -S --needed --noconfirm tk aspell-en  # needed for git gui
 	sudo pacman -S --needed --noconfirm docker virtualbox vagrant
 
+	sudo systemctl enable sshd.service
+	sudo systemctl start sshd.service
+
 	sudo systemctl enable docker
 	sudo systemctl start docker
+
+	sudo systemctl enable avahi-daemon.service
+	sudo systemctl start avahi-daemon.service
 	
 	# Node.js
 	if ! type node > /dev/null 2>&1; then
@@ -32,6 +39,9 @@ function base {
 
 	# Git Extras
 	(cd /tmp && git clone --depth 1 https://github.com/visionmedia/git-extras.git && cd git-extras && sudo make install)	
+
+	echo "To enable avahi lookup, modify the line beginning with 'hosts:' in /etc/nsswitch.conf:"
+	echo "hosts: files mdns_minimal [NOTFOUND=return] dns myhostname"
 }
 
 function zsh {
