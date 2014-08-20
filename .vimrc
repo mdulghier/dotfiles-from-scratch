@@ -42,7 +42,7 @@ set mouse=a
 set wrap
 set textwidth=79
 set formatoptions=qrn1
-set colorcolumn=85
+" set colorcolumn=85
 
 " tabs/spaces
 set tabstop=4
@@ -56,6 +56,10 @@ set directory=~/.vim/swaps
 if exists("&undodir")
 	set undodir=~/.vim/undo
 endif
+
+" open new split panes to the right and bottom
+set splitbelow
+set splitright
 
 """"""""""""""""""""""""" SEARCH
 
@@ -93,6 +97,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 nnoremap <leader>w :bprevious<CR>:bdelete #<CR> " close the current buffer without closing the window
+nnoremap <leader><leader> <C-^>       " switch between the last two buffers
 
 """""""""""""""""""""" APPEARANCE
 
