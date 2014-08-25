@@ -1,5 +1,9 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+if [ -d /usr/share/oh-my-zsh/ ]; then
+	export ZSH=/usr/share/oh-my-zsh
+else
+	export ZSH=$HOME/.oh-my-zsh/
+fi
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
