@@ -15,8 +15,12 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
 " Plugin 'tpope/vim-surround'
 " Plugin 'mattn/emmet-vim'
-" Plugin 'msanders/snipmate.vim'
 " Plugin 'scrooloose/nerdcommenter'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'jlanzarotta/bufexplorer'
 
 call vundle#end()
 
