@@ -76,7 +76,7 @@ function citrix {
 	# yaourt --needed icaclient
 	# mkdir -p $HOME/.ICAClient/cache
 	# cp /opt/Citrix/ICAClient/config/{All_Regions,Trusted_Region,Unknown_Region,canonicalization,regions}.ini $HOME/.ICAClient/
-	# sudo pacman -S --noconfirm gcc gcc-libs
+	# sudo pacman -S --noconfirm gcc gcc-libs binutils
 }
 
 function docker {

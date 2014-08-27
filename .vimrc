@@ -70,8 +70,6 @@ set incsearch
 set showmatch
 set hlsearch
 
-set foldmethod=indent
-set foldlevelstart=1
 
 """"""""""""""""""""""""" MAPPINGS
 
@@ -98,7 +96,7 @@ nnoremap <leader>w :bprevious<CR>:bdelete #<CR> " close the current buffer witho
 
 """""""""""""""""""""" APPEARANCE
 
-colorscheme zenburn
+colorscheme devbox-dark-256
 
 set cursorline
 set title
@@ -128,6 +126,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 nnoremap <leader>b :BufExplorer<CR>
 
+" CtrlP
+
+let g:ctrlp_custom_ignore = 'node_modules'
 
 """""""""""""""""""""" CUSTOM FUNCTIONS
 
