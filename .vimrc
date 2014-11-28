@@ -23,6 +23,7 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'editorconfig/editorconfig-vim'
 
 call vundle#end()
 
