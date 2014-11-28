@@ -76,8 +76,8 @@ set incsearch
 set showmatch
 set hlsearch
 
-set foldmethod=indent
-set foldlevelstart=1
+" set foldmethod=indent
+" set foldlevelstart=1
 
 """"""""""""""""""""""""" MAPPINGS
 
@@ -105,7 +105,7 @@ nnoremap <leader><leader> <C-^>       " switch between the last two buffers
 
 """""""""""""""""""""" APPEARANCE
 
-colorscheme zenburn
+colorscheme railscasts
 
 set cursorline
 set title
