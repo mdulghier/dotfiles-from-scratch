@@ -1,16 +1,19 @@
 [global_config]
+  window_state = maximise
   handle_size = 2
+  borderless = True
 [keybindings]
 [profiles]
   [[default]]
     scrollbar_position = hidden
     use_system_font = False
     background_darkness = 0.89
+    background_type = transparent
     background_image = None
     cursor_color = "#eee8d5"
     foreground_color = "#d9ffd1"
     show_titlebar = False
-    font = Droid Sans Mono 10
+    font = Source Code Pro for Powerline Ultra-Light 10
     background_color = "#3d3d3d"
     scrollback_infinite = True
 [layouts]
