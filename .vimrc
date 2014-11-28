@@ -22,6 +22,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'jlanzarotta/bufexplorer'
+Plugin 'digitaltoad/vim-jade'
 
 call vundle#end()
 
@@ -101,6 +102,9 @@ nnoremap <C-l> <C-w>l
 
 nnoremap <leader>w :bprevious<CR>:bdelete #<CR> " close the current buffer without closing the window
 nnoremap <leader><leader> <C-^>       " switch between the last two buffers
+
+" replace word under cursor
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 
 """""""""""""""""""""" APPEARANCE
 

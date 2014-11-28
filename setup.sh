@@ -11,6 +11,7 @@ function base {
 	sudo pacman -S --needed --noconfirm vim curl wget tmux terminator xclip 
 	sudo pacman -S --needed --noconfirm nss-mdns      # host name resolution via mDNS
 	sudo pacman -S --needed --noconfirm tk aspell-en  # needed for git gui
+	sudo pacman -S --needed --noconfirm cmake         # needed for Vim YouCompleteMe
 	sudo pacman -S --needed --noconfirm docker virtualbox vagrant
 
 	sudo systemctl enable sshd.service
@@ -117,6 +118,8 @@ function init {
 	fi
 	mkdir -p ~/.vim/backups ~/.vim/swaps ~/.vim/undo
 	vim +PluginInstall +qall
+	cd ~/.vim/bundle/YouCompleteMe/
+	install.sh
 }
 
 if [ $# -ne 1 ]; then
