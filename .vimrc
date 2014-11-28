@@ -14,15 +14,15 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
-" Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 " Plugin 'mattn/emmet-vim'
-" Plugin 'scrooloose/nerdcommenter'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'digitaltoad/vim-jade'
+Plugin 'tpope/vim-unimpaired'
 
 call vundle#end()
 
@@ -78,6 +78,8 @@ set incsearch
 set showmatch
 set hlsearch
 
+" set foldmethod=indent
+" set foldlevelstart=1
 
 """"""""""""""""""""""""" MAPPINGS
 
@@ -108,7 +110,7 @@ nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 
 """""""""""""""""""""" APPEARANCE
 
-colorscheme devbox-dark-256
+colorscheme railscasts
 
 set cursorline
 set title
@@ -141,6 +143,11 @@ nnoremap <leader>b :BufExplorer<CR>
 " CtrlP
 
 let g:ctrlp_custom_ignore = 'node_modules'
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
 
 """""""""""""""""""""" CUSTOM FUNCTIONS
 
