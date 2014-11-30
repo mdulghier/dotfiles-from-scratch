@@ -6,7 +6,6 @@ set -e
 
 function base {
 	sudo pacman -Syu
-	yaourt -S packer
 
 	sudo pacman -S --needed --noconfirm vim curl wget tmux terminator xclip 
 	sudo pacman -S --needed --noconfirm nss-mdns      # host name resolution via mDNS
@@ -25,6 +24,7 @@ function base {
 	
 	# Node.js
 	if ! type node > /dev/null 2>&1; then
+		# install global npm packages in home folder to prevent need for sudo
 		mkdir -p $HOME/.npm/.global
 		echo prefix = ~/.npm/.global >> ~/.npmrc
 		echo "export PATH=$PATH:$HOME/.npm/.global/bin" >> ~/.bashrc
@@ -47,29 +47,28 @@ function base {
 
 function zsh {
 	sudo pacman -S --needed --noconfirm zsh zsh-completions
-	packer -S oh-my-zsh-git
+	pacaur -S oh-my-zsh-git
 	ln -sf $BASEDIR/.zshrc ~/.zshrc
 	chsh -s $(which zsh)
 }
 
-function ext {
+function installGuiTools {
 	# Default applications
 	sudo pacman -S --needed --noconfirm chromium firefox synapse
 	sudo pacman -S --needed --noconfirm synapse
 	sudo pacman -S --needed --noconfirm skype keepass
 
-	# Pretty desktop
-	sudo pacman -S --needed --noconfirm qtcurve-kde4
-	sudo pacman -S --needed --noconfirm ttf-droid ttf-inconsolata
-
-	packer -S ttf-ms-fonts ttf-mac-fonts 
-	# TODO: caledonia theme for KDE
-
 	# Tools for work
 	sudo pacman -S --needed --noconfirm sublime-text dropbox hipchat robomongo
 
 	# Entertainment
-	sudo pacman -S --needed --noconfirim spotify	
+	sudo pacman -S --needed --noconfirm spotify	
+}
+
+function kde {
+	# Pretty desktop
+	sudo pacman -S --needed --noconfirm qtcurve-kde4
+	# TODO: caledonia theme for KDE
 }
 
 function citrix {
@@ -80,23 +79,39 @@ function citrix {
 	# sudo pacman -S --noconfirm gcc gcc-libs binutils
 }
 
-function docker {
-	sudo docker pull mongo
-	sudo docker pull redis
-}
-
-
 function ssh {
 	ssh-keygen -t RSA -C "markus@dulghier.com"
 	cat ~/.ssh/id_rsa.pub | xclip -selection c
 }
 
 function coding {
-	sudo pacman -S --needed --noconfirm the_silver_searcher meld
-	packer -S powerline-fonts-git
-	npm install -g jshint
+	sudo pacman -S --needed --noconfirm meld
 }
 
+function setupVim {
+	sudo pacman -S --needed --noconfirm the_silver_searcher
+	pacaur -S powerline-fonts-git
+	
+	# Vim setup
+	if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
+		git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	fi
+	mkdir -p ~/.vim/backups ~/.vim/swaps ~/.vim/undo
+	vim +PluginInstall +qall
+	cd ~/.vim/bundle/YouCompleteMe/
+	install.sh
+}
+
+function setupGuiTools {
+	# GUI tools setup
+	mkdir -p $HOME/.config/synapse
+	ln -sf $BASEDIR/.config/synapse/config.json ~/.config/synapse/config.json
+	mkdir -p $HOME/.config/terminator
+	ln -sf $BASEDIR/.config/terminator/config ~/.config/terminator/config
+
+	sudo pacman -S --needed --noconfirm ttf-droid ttf-inconsolata
+	pacaur -S ttf-ms-fonts ttf-mac-fonts 
+}
 
 function init {
 	# Shell & base tools setup
@@ -106,20 +121,7 @@ function init {
 	ln -sf $BASEDIR/.tmux.conf ~/.tmux.conf 
 	ln -sf $BASEDIR/.gitconfig ~/.gitconfig
 
-	# GUI tools setup
-	mkdir -p $HOME/.config/synapse
-	ln -sf $BASEDIR/.config/synapse/config.json ~/.config/synapse/config.json
-	mkdir -p $HOME/.config/terminator
-	ln -sf $BASEDIR/.config/terminator/config ~/.config/terminator/config
-
-	# Vim setup
-	if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
-		git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-	fi
-	mkdir -p ~/.vim/backups ~/.vim/swaps ~/.vim/undo
-	vim +PluginInstall +qall
-	cd ~/.vim/bundle/YouCompleteMe/
-	install.sh
+	setupVim
 }
 
 if [ $# -ne 1 ]; then
