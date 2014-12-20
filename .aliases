@@ -8,6 +8,8 @@ alias dev="cd ~/dev"
 
 # Shortcuts
 alias g="git"
+alias v="vim"
+alias vi="vim"
 
 
 # Nicer ls

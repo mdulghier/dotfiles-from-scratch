@@ -89,8 +89,8 @@ function coding {
 }
 
 function setupVim {
-	sudo pacman -S --needed --noconfirm the_silver_searcher
-	pacaur -S powerline-fonts-git
+	# sudo pacman -S --needed --noconfirm the_silver_searcher
+	# pacaur -S powerline-fonts-git
 	
 	# Vim setup
 	if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
