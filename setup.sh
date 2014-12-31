@@ -47,8 +47,9 @@ function base {
 
 function zsh {
 	sudo pacman -S --needed --noconfirm zsh zsh-completions
-	pacaur -S oh-my-zsh-git
+	pacaur -S prezto-git
 	ln -sf $BASEDIR/.zshrc ~/.zshrc
+	ln -sf $BASEDIR/.zpreztorc ~/.zpreztorc
 	chsh -s $(which zsh)
 }
 

@@ -1,0 +1,19 @@
+zstyle ':prezto:load' pmodule \
+		   'git' \
+		   'environment' \
+		   'terminal' \
+		   'editor' \
+		   'history' \
+		   'directory' \
+		   'spectrum' \
+		   'utility' \
+		   'ssh' \
+		   'completion' \
+		   'git' \
+		   'syntax-highlighting' \
+		   'history-substring-search' \
+		   'prompt'
+
+zstyle ':prezto:module:prompt' theme 'cloud' '✯'
+zstyle ':prezto:module:git:info:context:subcontext' format 'string'
+
