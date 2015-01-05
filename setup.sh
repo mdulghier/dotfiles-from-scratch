@@ -53,6 +53,18 @@ function zsh {
 	chsh -s $(which zsh)
 }
 
+function install_i3 {
+	sudo pacman -S --needed --noconfirm i3 dmenu feh xautolock xorg-xbacklight conky
+	pacaur -S i3lock-wrapper playerctl
+	mkdir -p $HOME/.config/i3
+	mkdir -p $HOME/.config/i3status
+	ln -sf $BASEDIR/.config/i3/config $HOME/.config/i3/config
+	ln -sf $BASEDIR/.config/i3status/config $HOME/.config/i3status/config
+	ln -sf $BASEDIR/conkyrc $HOME/.conkyrc
+	sudo ln -sf $BASEDIR/i3exit /usr/local/bin/i3exit
+	sudo ln -sf $BASEDIR/i3-conky-wrapper /usr/local/bin/conky-wrapper
+}
+
 function installGuiTools {
 	# Default applications
 	sudo pacman -S --needed --noconfirm chromium firefox synapse
