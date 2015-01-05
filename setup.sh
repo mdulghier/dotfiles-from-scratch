@@ -67,7 +67,7 @@ function zsh {
 	sudo pacman -S --needed --noconfirm zsh zsh-completions
 	pacaur -S prezto-git
 	ln -sf /etc/zsh/zpreztorc ~/.zshrc
-	ln -sf $BASEDIR/.zpreztorc ~/.zpreztorc
+	ln -sf $BASEDIR/zpreztorc ~/.zpreztorc
 	chsh -s $(which zsh)
 }
 
@@ -134,11 +134,11 @@ function setupGuiTools {
 
 function init {
 	# Shell & base tools setup
-	ln -sf $BASEDIR/.aliases ~/.aliases
-	ln -sf $BASEDIR/.functions ~/.functions
-	ln -sf $BASEDIR/.vimrc ~/.vimrc   
-	ln -sf $BASEDIR/.tmux.conf ~/.tmux.conf 
-	ln -sf $BASEDIR/.gitconfig ~/.gitconfig
+	ln -sf $BASEDIR/aliases ~/.aliases
+	ln -sf $BASEDIR/functions ~/.functions
+	ln -sf $BASEDIR/vimrc ~/.vimrc   
+	ln -sf $BASEDIR/tmux.conf ~/.tmux.conf 
+	ln -sf $BASEDIR/gitconfig ~/.gitconfig
 
 	setupVim
 }
