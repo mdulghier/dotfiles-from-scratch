@@ -81,6 +81,9 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -169,6 +172,8 @@ mode "$mode_system" {
 bindsym $mod+Escape mode "$mode_system"
 bindsym Ctrl+Mod1+l exec --no-startup-id i3exit lock    # Ctrl+Alt+L to lock the screen
 
+bindsym $mod+g exec google-chrome-stable # Mod+G -> Google Chrome
+
 # Volume Control
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -- '-5%'
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 -- '+5%'
@@ -188,7 +193,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
 
 # Auto Lock screen after 5 minutes
-exec --no-startup-id xautolock -time 5 -locker 'i3exit lock'
+exec --no-startup-id xautolock -detectsleep -time 5 -locker 'i3exit lock'
 
 # Wifi (via NetworkManager)
 exec --no-startup-id nm-applet
