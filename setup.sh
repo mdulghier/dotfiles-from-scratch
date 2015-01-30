@@ -72,7 +72,7 @@ function zsh {
 }
 
 function install_i3 {
-	sudo pacman -S --needed --noconfirm i3 dmenu feh xautolock xorg-xbacklight conky dunst
+	sudo pacman -S --needed --noconfirm i3 dmenu feh xautolock xorg-xbacklight conky dunst volumeicon
 	pacaur -S --needed --noconfirm i3lock-wrapper playerctl
 	mkdir -p $HOME/.config/i3
 	mkdir -p $HOME/.config/i3status

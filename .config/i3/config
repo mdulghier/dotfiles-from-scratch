@@ -208,3 +208,5 @@ exec --no-startup-id volumeicon
 exec --no-startup-id dunst
 
 exec dropboxd
+
+exec xrandr --output VGA1 --left-of HDMI1
