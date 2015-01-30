@@ -5,13 +5,13 @@
   [[default]]
     scrollbar_position = hidden
     use_system_font = False
-    background_darkness = 0.89
+    background_darkness = 0.51
     background_type = transparent
     background_image = None
     cursor_color = "#eee8d5"
     foreground_color = "#d9ffd1"
     show_titlebar = False
-    font = Source Code Pro for Powerline Semi-Light 11
+    font = Liberation Mono for Powerline 10
     background_color = "#3d3d3d"
     scrollback_infinite = True
 [layouts]

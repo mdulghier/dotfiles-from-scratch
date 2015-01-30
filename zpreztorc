@@ -1,0 +1,27 @@
+zstyle ':prezto:load' pmodule \
+		   'git' \
+		   'environment' \
+		   'terminal' \
+		   'editor' \
+		   'history' \
+		   'directory' \
+		   'spectrum' \
+		   'utility' \
+		   'ssh' \
+		   'completion' \
+		   'git' \
+		   'syntax-highlighting' \
+		   'history-substring-search' \
+		   'tmux' \
+		   'prompt'
+
+zstyle ':prezto:module:prompt' theme 'cloud' '✯'
+zstyle ':prezto:module:git:info:context:subcontext' format 'string'
+
+
+if [ $TERM != "screen-256color" ]; then
+	export TERM=xterm-256color
+fi
+
+export PATH=$PATH:$HOME/.npm/.global/bin
+export PYTHON=python2.7
