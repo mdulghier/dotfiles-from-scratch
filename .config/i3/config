@@ -17,7 +17,7 @@ bindsym $mod+g exec google-chrome-stable
 for_window [class="Google Chrome"] border none
 bindsym $mod+n exec nautilus
 for_window [class="Nautilus"] floating enable
-assign [class="Spotify"] $10 spotify
+assign [class="Spotify"] $10
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -113,6 +113,9 @@ bindsym $mod+Shift+Left move workspace to output left
 bindsym Mod1+Tab workspace next
 bindsym Mod1+Shift+Tab workspace prev
 
+bindsym $mod+m move scratchpad
+bindsym $mod+o scratchpad show
+
 # reload/restart
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -140,7 +143,7 @@ bar {
 	position bottom
 	mode dock
 	tray_output primary
-	font pango:Deja Vu Sans Condensed 10
+	font pango:Droid Sans 9
 	colors {
 		separator #666666
 		background #222222
@@ -161,9 +164,9 @@ new_window 1pixel
 new_float 1pixel
 hide_edge_borders both
 
-font pango:Source Code Pro 9
+# font pango:Source Code Pro 9
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# font pango:DejaVu Sans Mono 8
+font pango:Droid Sans 9
 
 # Exit
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -210,3 +213,5 @@ exec --no-startup-id dunst
 exec dropboxd
 
 exec xrandr --output VGA1 --left-of HDMI1
+exec pactl set-sink-volume 0 '20%'
+exec xset dpms 300 600 900
