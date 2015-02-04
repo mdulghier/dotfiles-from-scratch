@@ -143,7 +143,7 @@ bar {
 	position bottom
 	mode dock
 	tray_output primary
-	font pango:Droid Sans 9
+	font pango:Lucida G 9
 	colors {
 		separator #666666
 		background #222222
@@ -164,9 +164,7 @@ new_window 1pixel
 new_float 1pixel
 hide_edge_borders both
 
-# font pango:Source Code Pro 9
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font pango:Droid Sans 9
+font pango:Lucida G 9
 
 # Exit
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -209,8 +207,7 @@ exec --no-startup-id gsettings set org.gnome.settings-daemon.plugins.cursor acti
 exec --no-startup-id compton -b
 exec --no-startup-id volumeicon
 exec --no-startup-id dunst
-
-exec dropboxd
+exec --no-startup-id dropboxd
 
 exec xrandr --output VGA1 --left-of HDMI1
 exec pactl set-sink-volume 0 '20%'
